@@ -1,0 +1,17 @@
+apiVersion: v2
+name: helm-test-app
+version: 1.0.0
+description: Helm chart metadata.
+
+dependencies:
+  - name: nginx
+    version: The version of the chart ("1.2.3")
+
+maintainers:
+  - name: Kevin Johansson,
+          Dragosh Mihai Zugrav
+    email: kj223ag@student.lnu.se,
+           dz222cr@student.lnu.se
+
+appVersion: 1.0.0
+deprecated: false
