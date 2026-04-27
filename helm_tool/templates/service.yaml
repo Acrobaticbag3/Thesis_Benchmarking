@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: helm-test-app
+
+spec:
+  selector:
+    app.kubernetes.io/name: helm-test-app
+  ports:
+  - name: http
+    port: 80
+    targetPort: 46385
