@@ -6,11 +6,11 @@ set -euo pipefail   # e - exit emedietly on fail
 RESULTS="runner/results.csv"
 # echo "tool_name, test_round, time_to_deploy, time_to_rollback, test_result" > "$RESULTS"
 
-TOOLS=("helm", "kustomize", "timoni", "cdk8s")
+TOOLS=("helm" "kustomize" "timoni" "cdk8s")
 ROUNDS=10
 
 for tool in "${TOOLS[@]}"; do 
   for round in $(seq 1 $ROUNDS); do
-    echo "${round}"
+    echo "=== $tool - round: $round ==="
   done
 done 

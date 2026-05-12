@@ -3,10 +3,6 @@ name: helm-test-app
 version: 1.0.0
 description: Helm chart metadata.
 
-dependencies:
-  - name: nginx
-    version: "1.2.3"
-
 maintainers:
   - name: Kevin Johansson
     email: kj223ag@student.lnu.se
