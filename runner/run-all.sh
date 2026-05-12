@@ -4,7 +4,7 @@ set -euo pipefail   # e - exit emedietly on fail
                     # o pipefail - full pipe failure if any operation in said pipe fails
 
 RESULTS="results.csv"
-echo "tool_name,test_round,time_to_deploy,time_to_rollback,successfull_run" > "$RESULTS"
+# echo "tool_name,test_round,time_to_deploy,time_to_rollback,successfull_run" > "$RESULTS"
 
 TOOLS=("helm_tool" "kustomize_tool" "timoni_tool" "cdk8s_tool")
 ROUNDS=10
@@ -26,13 +26,13 @@ for tool in "${TOOLS[@]}"; do
       time_to_rollback=$(( time_rollback_end - time_rollback_end ))
       
       # Record test success or failure
-      echo "$tool_name,
-        $test_round,
-        $time_to_deploy,
-        $time_to_rollback,
-        true" >> "$RESULTS"
-    else
-      echo "$tool_name,$test_round,-1,-1,false" >> "$RESULTS"
+      # echo "$tool_name,
+      #  $test_round,
+      #  $time_to_deploy,
+      #  $time_to_rollback,
+      #  true" >> "$RESULTS"
+    #else
+      #echo "$tool_name,$test_round,-1,-1,false" >> "$RESULTS"
     fi
 
     # Teardown
