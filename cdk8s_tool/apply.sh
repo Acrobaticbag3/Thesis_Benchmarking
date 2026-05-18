@@ -54,8 +54,8 @@ case "$1" in
         ;;
     esac
     
-    npx -y cdk8s-cli synth > /dev/null 2>&1
-    exit_code=$?
+    exit_code=0
+    npx -y cdk8s-cli synth > /dev/null 2>&1 || exit_code=$?
     
     case "$MUTATION_TYPE" in
       type-mismatch)

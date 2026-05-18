@@ -10,7 +10,7 @@ RESULTS="results.csv"
 echo "tool_name,test_round,time_to_deploy_ms,time_to_rollback_ms,resource_overhead_mb,cpu_utilization_percent,successfull_run,caught_type_mismatch,caught_invalid_port,caught_missing_image,caught_typo_field" > "$RESULTS"
 
 TOOLS=("helm_tool" "kustomize_tool" "timoni_tool" "cdk8s_tool")
-ROUNDS=1 # Increased to 10 as requested
+ROUNDS=10 # Increased to 10 as requested
 
 NAMESPACE="test-namespace"
 IMAGE="nginx:latest"
@@ -25,6 +25,24 @@ for tool in "${TOOLS[@]}"; do
   echo "Evaluating tool: $tool"
   echo "========================================="
   
+  # Bug Taxonomy Testing (Runs once per tool before performance iterations)
+  echo "=== $tool - Bug Taxonomy Testing ==="
+  MUTATIONS=("type-mismatch" "invalid-port" "missing-image" "typo-field")
+  declare -A caught_results
+  for mut in "${MUTATIONS[@]}"; do
+    echo "  -> Running correctness tests ($mut)..."
+    bash "../${tool}/apply.sh" teardown >> "../${tool}/runner-log" 2>&1 || true
+    if bash "../${tool}/apply.sh" deploy-mutation "$mut" >> "../${tool}/runner-log" 2>&1; then
+      echo "     [FAIL] Tool allowed invalid configuration or failed at Kubernetes API level ($mut)"
+      caught_results[$mut]="false"
+    else
+      echo "     [PASS] Tool correctly rejected invalid configuration ($mut)"
+      caught_results[$mut]="true"
+    fi
+  done
+  # Ensure clean state after taxonomy tests
+  bash "../${tool}/apply.sh" teardown >> "../${tool}/runner-log" 2>&1 || true
+
   for round in $(seq 1 $ROUNDS); do
     echo "=== $tool - round: $round ==="
 
@@ -82,21 +100,6 @@ for tool in "${TOOLS[@]}"; do
       success="false"
     fi
 
-    # Correctness testing (Bug Taxonomy) - Mutation Point Pattern
-    # This phase applies known faulty configurations and expects the adapter to fail gracefully.
-    MUTATIONS=("type-mismatch" "invalid-port" "missing-image" "typo-field")
-    declare -A caught_results
-    for mut in "${MUTATIONS[@]}"; do
-      echo "  -> Running correctness tests ($mut)..."
-      if bash "../${tool}/apply.sh" deploy-mutation "$mut" >> "../${tool}/runner-log" 2>&1; then
-        echo "     [FAIL] Tool allowed invalid configuration or failed at Kubernetes API level ($mut)"
-        caught_results[$mut]="false"
-      else
-        echo "     [PASS] Tool correctly rejected invalid configuration ($mut)"
-        caught_results[$mut]="true"
-      fi
-    done
-
     # Record data
     echo "$tool,$round,$time_to_deploy,$time_to_rollback,$overhead_mb,$cpu_percent,$success,${caught_results[type-mismatch]},${caught_results[invalid-port]},${caught_results[missing-image]},${caught_results[typo-field]}" >> "$RESULTS"
     
@@ -109,3 +112,29 @@ done
 
 echo "Benchmarking complete. Results saved to $RESULTS"
 cat "$RESULTS"
+echo ""
+
+echo "=== Calculating Averages ==="
+AVERAGES="averages.csv"
+echo "tool_name,avg_time_to_deploy_ms,avg_time_to_rollback_ms,avg_resource_overhead_mb,avg_cpu_utilization_percent" > "$AVERAGES"
+
+awk -F',' '
+  NR > 1 && $7 == "true" {
+    tool=$1
+    deploy[tool] += $3
+    rollback[tool] += $4
+    ram[tool] += $5
+    cpu[tool] += $6
+    count[tool]++
+  }
+  END {
+    for (t in count) {
+      if (count[t] > 0) {
+        printf "%s,%.0f,%.0f,%.0f,%.0f\n", t, deploy[t]/count[t], rollback[t]/count[t], ram[t]/count[t], cpu[t]/count[t]
+      }
+    }
+  }
+' "$RESULTS" >> "$AVERAGES"
+
+echo "Averages saved to $AVERAGES"
+cat "$AVERAGES"
