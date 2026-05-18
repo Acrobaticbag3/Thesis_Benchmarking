@@ -25,35 +25,55 @@ To ensure that performance variations are strictly tied to tool behavior rather 
 
 ## Prerequisites
 
-To run this benchmark locally, ensure you have the following installed:
-1. **Docker** and **Kind** (Kubernetes IN Docker) to spin up a local cluster.
+To run this benchmark locally from scratch, ensure your system has the following core dependencies installed:
+1. **Docker** and **Kind** (Kubernetes IN Docker) to spin up the local cluster.
 2. **kubectl** for cluster interaction.
-3. The abstraction tools being benchmarked:
-   - [Helm](https://helm.sh/docs/intro/install/)
-   - Kustomize (typically bundled with `kubectl` via `-k`, but standalone can be used)
-   - [Timoni](https://timoni.sh/)
-   - [Node.js](https://nodejs.org/) & `npx` (required for cdk8s synthesis)
+3. **Node.js** & **npm** (required for cdk8s).
+
+You will also need the CLIs for the four tools being benchmarked:
+- **Helm**: `curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 && bash get_helm.sh`
+- **Kustomize**: Built natively into `kubectl`, but standalone can be used.
+- **Timoni**: `brew install stefanprodan/tap/timoni` (or via Go: `go install github.com/stefanprodan/timoni/cmd/timoni@latest`)
+- **cdk8s-cli**: `npm install -g cdk8s-cli`
 
 ## Setup and Running
 
-1. **Start your local Kubernetes cluster**
+Follow these exact steps to ensure a flawless benchmarking run:
+
+1. **Start the local Kubernetes cluster**
    We use Kind to create a clean, reproducible environment:
    ```bash
    kind create cluster --name kind
    ```
 
-2. **Run the Benchmark**
-   Navigate to the runner directory and execute the orchestration script. The script automatically pre-pulls the NGINX image to the Kind nodes to eliminate first-time image pull latency.
+2. **Install local dependencies for CDK8s**
+   Because CDK8s synthesizes manifests from TypeScript code, you must install the local Node packages before running the benchmark:
    ```bash
-   cd runner
-   ./run-all.sh
+   cd cdk8s_tool
+   npm install
+   cd ..
    ```
 
-3. **View the Results**
-   As the runner tests each tool, progress will be streamed to the terminal. Once finished, a comma-separated values file will be generated containing the millisecond-precision timing and outcome of each round.
+3. **Ensure scripts have execution permissions**
+   Make sure the runner and all tool adapters are strictly executable:
    ```bash
-   cat results.csv
+   chmod +x runner/run-all.sh
+   chmod +x helm_tool/apply.sh
+   chmod +x kustomize_tool/apply.sh
+   chmod +x timoni_tool/apply.sh
+   chmod +x cdk8s_tool/apply.sh
    ```
+
+4. **Run the Benchmark**
+   Execute the orchestration script. The script will pre-pull the NGINX image to the Kind nodes to eliminate pull latency, evaluate the Bug Taxonomy, and then execute the performance iterations:
+   ```bash
+   ./runner/run-all.sh
+   ```
+
+5. **View the Results**
+   The output generates two incredibly useful CSV files for your thesis:
+   - `runner/results.csv`: Contains the highly granular raw data (millisecond-precision timings, CPU %, Memory footprint, and pass/fail bug taxonomy checks per round).
+   - `runner/averages.csv`: A mathematically clean summary that automatically averages the performance metrics for each tool (excluding failed runs).
 
 ## Experimental Controls
 
