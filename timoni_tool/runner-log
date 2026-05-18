@@ -28,3 +28,15 @@ namespace/test-namespace created
 ../timoni_tool/apply.sh: line 11: timoni: command not found
 ../timoni_tool/apply.sh: line 26: timoni: command not found
 namespace "test-namespace" deleted
+error: the path "/tmp/timoni-rendered.yaml" does not exist
+timoni.sh/benchmark/templates@v0: import failed: cannot find package "timoni.sh/core/v1alpha1": cannot find module providing package timoni.sh/core/v1alpha1:
+    ../timoni.cue:4:2
+No resources found
+No resources found
+timoni.sh/benchmark/templates@v0: import failed: cannot find package "timoni.sh/core/v1alpha1": cannot find module providing package timoni.sh/core/v1alpha1:
+    ../timoni.cue:4:2
+No resources found
+No resources found
+timoni.sh/benchmark/templates@v0: import failed: cannot find package "timoni.sh/core/v1alpha1": cannot find module providing package timoni.sh/core/v1alpha1:
+    ../timoni.cue:4:2
+No resources found

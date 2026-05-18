@@ -24,3 +24,57 @@ bash: helm_tool/apply.sh: No such file or directory
 ../helm_tool/apply.sh: line 24: helm: command not found
 ../helm_tool/apply.sh: line 9: helm: command not found
 ../helm_tool/apply.sh: line 24: helm: command not found
+Error: uninstall: Release not loaded: benchmark-helm: release: not found
+Release "benchmark-helm" does not exist. Installing it now.
+NAME: benchmark-helm
+LAST DEPLOYED: Mon May 18 16:37:42 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+Release "benchmark-helm" has been upgraded. Happy Helming!
+NAME: benchmark-helm
+LAST DEPLOYED: Mon May 18 16:37:44 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+Rollback was a success! Happy Helming!
+release "benchmark-helm" uninstalled
+namespace "test-namespace" deleted
+Error: uninstall: Release not loaded: benchmark-helm: release: not found
+Release "benchmark-helm" does not exist. Installing it now.
+NAME: benchmark-helm
+LAST DEPLOYED: Mon May 18 16:38:03 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+Release "benchmark-helm" has been upgraded. Happy Helming!
+NAME: benchmark-helm
+LAST DEPLOYED: Mon May 18 16:38:05 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+Rollback was a success! Happy Helming!
+release "benchmark-helm" uninstalled
+namespace "test-namespace" deleted
+Error: uninstall: Release not loaded: benchmark-helm: release: not found
+Release "benchmark-helm" does not exist. Installing it now.
+NAME: benchmark-helm
+LAST DEPLOYED: Mon May 18 16:38:24 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+Release "benchmark-helm" has been upgraded. Happy Helming!
+NAME: benchmark-helm
+LAST DEPLOYED: Mon May 18 16:38:26 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+Rollback was a success! Happy Helming!
+release "benchmark-helm" uninstalled
+namespace "test-namespace" deleted

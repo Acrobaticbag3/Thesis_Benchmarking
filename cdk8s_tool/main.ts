@@ -11,14 +11,24 @@ export class MyChart extends Chart {
         name: 'cdk8s-test-app',
       },
       replicas: 4,
+      securityContext: {
+        ensureNonRoot: false,
+      },
       containers: [{
         name: 'test-app',
         image: 'nginx:latest',
+        imagePullPolicy: kplus.ImagePullPolicy.IF_NOT_PRESENT,
         portNumber: 80,
         resources: {
           cpu: { request: kplus.Cpu.millis(200), limit: kplus.Cpu.millis(1000) },
           memory: { request: Size.mebibytes(256), limit: Size.gibibytes(1) }
-        }
+        },
+        securityContext: {
+          ensureNonRoot: false,
+          readOnlyRootFilesystem: false,
+          allowPrivilegeEscalation: false,
+          privileged: false,
+        },
       }]
     });
 

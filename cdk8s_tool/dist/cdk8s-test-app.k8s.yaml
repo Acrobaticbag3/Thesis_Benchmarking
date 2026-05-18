@@ -24,7 +24,7 @@ spec:
       automountServiceAccountToken: false
       containers:
         - image: nginx:latest
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           name: test-app
           ports:
             - containerPort: 80
@@ -38,8 +38,8 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
             privileged: false
-            readOnlyRootFilesystem: true
-            runAsNonRoot: true
+            readOnlyRootFilesystem: false
+            runAsNonRoot: false
           startupProbe:
             failureThreshold: 3
             tcpSocket:
@@ -49,7 +49,7 @@ spec:
       restartPolicy: Always
       securityContext:
         fsGroupChangePolicy: Always
-        runAsNonRoot: true
+        runAsNonRoot: false
       setHostnameAsFQDN: false
       terminationGracePeriodSeconds: 30
 ---
