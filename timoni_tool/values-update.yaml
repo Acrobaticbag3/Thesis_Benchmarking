@@ -1,0 +1,3 @@
+values:
+  image:
+    tag: "alpine"

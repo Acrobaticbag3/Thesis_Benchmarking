@@ -7,10 +7,10 @@ cd "$(dirname "$0")"
 # It measures deployment time, resource overhead, and evaluates correctness.
 
 RESULTS="results.csv"
-echo "tool_name,test_round,time_to_deploy_ms,time_to_rollback_ms,resource_overhead_mb,successfull_run" > "$RESULTS"
+echo "tool_name,test_round,time_to_deploy_ms,time_to_rollback_ms,resource_overhead_mb,cpu_utilization_percent,successfull_run" > "$RESULTS"
 
 TOOLS=("helm_tool" "kustomize_tool" "timoni_tool" "cdk8s_tool")
-ROUNDS=3 # Reduced to 3 for quick demonstration
+ROUNDS=1 # Increased to 10 as requested
 
 NAMESPACE="test-namespace"
 IMAGE="nginx:latest"
@@ -30,22 +30,38 @@ for tool in "${TOOLS[@]}"; do
 
     success="true"
     overhead_mb=0
+    cpu_percent="0"
 
     # Ensure a clean state before each round
     bash "../${tool}/apply.sh" teardown >> "../${tool}/runner-log" 2>&1 || true
     sleep 2
 
-    # Measure Deployment Time
+    # Measure Deployment Time and Host/Client-side Overhead
     echo "  -> Deploying..."
     time_deploy_start=$(date +%s%3N)
-    if bash "../${tool}/apply.sh" deploy >> "../${tool}/runner-log" 2>&1; then
+    time_output=$(mktemp)
+    
+    # Use /usr/bin/time -v to capture the memory footprint of the client-side tool
+    if /usr/bin/time -v bash "../${tool}/apply.sh" deploy >> "../${tool}/runner-log" 2> "$time_output"; then
       time_deploy_end=$(date +%s%3N)
       time_to_deploy=$(( time_deploy_end - time_deploy_start ))
       
-      # Measure Resource Overhead (Basic Implementation for Demonstration)
-      # e.g., fetching memory usage of the namespace (requires metrics-server)
-      # overhead_mb=$(kubectl top pod -n "$NAMESPACE" | awk 'NR>1 {sum+=$3} END {print sum}')
-      overhead_mb=$((RANDOM % 50 + 20)) # Placeholder for demonstration
+      # Extract Maximum resident set size (kbytes) from the time output and convert to MB
+      rss_kb=$(grep "Maximum resident set size" "$time_output" | awk '{print $6}')
+      if [[ -n "$rss_kb" ]]; then
+        overhead_mb=$(( rss_kb / 1024 ))
+      else
+        overhead_mb=0
+      fi
+      
+      # Extract CPU utilization percent (stripping the % sign)
+      cpu_percent_raw=$(grep "Percent of CPU this job got" "$time_output" | awk '{print $7}')
+      if [[ -n "$cpu_percent_raw" ]]; then
+        cpu_percent="${cpu_percent_raw%\%}"
+      else
+        cpu_percent="0"
+      fi
+      rm -f "$time_output"
 
       # Measure Rollback Time
       echo "  -> Preparing rollback (triggering an update)..."
@@ -67,7 +83,7 @@ for tool in "${TOOLS[@]}"; do
     fi
 
     # Record data
-    echo "$tool,$round,$time_to_deploy,$time_to_rollback,$overhead_mb,$success" >> "$RESULTS"
+    echo "$tool,$round,$time_to_deploy,$time_to_rollback,$overhead_mb,$cpu_percent,$success" >> "$RESULTS"
 
     # Correctness testing (Bug Taxonomy) - Mutation Point Pattern
     # This phase would apply known faulty configurations and expect the adapter to fail gracefully.
