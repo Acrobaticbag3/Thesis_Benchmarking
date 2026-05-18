@@ -15,10 +15,15 @@ case "$1" in
     if [ ! -d "node_modules" ]; then
       npm install > /dev/null 2>&1
     fi
-    npx cdk8s synth > /dev/null 2>&1
+    npx -y cdk8s-cli synth > /dev/null 2>&1
     
     kubectl create namespace "$NAMESPACE" --dry-run=client -o yaml | kubectl apply -f -
     kubectl apply -f dist/cdk8s-test-app.k8s.yaml -n "$NAMESPACE"
+    kubectl rollout status deployment/"$RELEASE" -n "$NAMESPACE" --timeout=2m
+    ;;
+  update)
+    # trigger a change so we have history
+    kubectl set image deployment/"$RELEASE" test-app=nginx:alpine -n "$NAMESPACE"
     kubectl rollout status deployment/"$RELEASE" -n "$NAMESPACE" --timeout=2m
     ;;
   rollback)

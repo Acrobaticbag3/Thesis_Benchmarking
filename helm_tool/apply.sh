@@ -11,6 +11,11 @@ case "$1" in
       --values "$CHART_DIR/values.yaml" \
       --wait --timeout 2m
     ;;
+  update)
+    helm upgrade "$RELEASE" "$CHART_DIR" \
+      --namespace "$NAMESPACE" \
+      --set image.tag=alpine --wait --timeout 2m
+    ;;
   rollback)
     helm rollback "$RELEASE" 0 \
       --namespace "$NAMESPACE" --wait

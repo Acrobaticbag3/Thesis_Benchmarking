@@ -1,1 +1,10 @@
-tool_name,test_round,time_to_deploy,time_to_rollback,successfull_run
+tool_name,test_round,time_to_deploy_ms,time_to_rollback_ms,resource_overhead_mb,successfull_run
+helm_tool,1,-1,-1,0,false
+helm_tool,2,-1,-1,0,false
+helm_tool,3,-1,-1,0,false
+kustomize_tool,1,1994,5008,63,true
+kustomize_tool,2,2127,2925,25,true
+kustomize_tool,3,1478,2016,44,true
+timoni_tool,1,-1,-1,0,false
+timoni_tool,2,-1,-1,0,false
+timoni_tool,3,-1,-1,0,false

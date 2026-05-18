@@ -1,5 +1,5 @@
 import { Construct } from 'constructs';
-import { App, Chart, ChartProps } from 'cdk8s';
+import { App, Chart, ChartProps, Size } from 'cdk8s';
 import * as kplus from 'cdk8s-plus-27';
 
 export class MyChart extends Chart {
@@ -17,7 +17,7 @@ export class MyChart extends Chart {
         portNumber: 80,
         resources: {
           cpu: { request: kplus.Cpu.millis(200), limit: kplus.Cpu.millis(1000) },
-          memory: { request: kplus.Size.mebibytes(256), limit: kplus.Size.gibibytes(1) }
+          memory: { request: Size.mebibytes(256), limit: Size.gibibytes(1) }
         }
       }]
     });

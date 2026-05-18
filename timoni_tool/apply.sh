@@ -11,6 +11,11 @@ case "$1" in
     timoni apply "$RELEASE" "$TIMONI_DIR" -n "$NAMESPACE"
     kubectl rollout status deployment/"$RELEASE" -n "$NAMESPACE" --timeout=2m
     ;;
+  update)
+    # trigger a change so we have history
+    kubectl set image deployment/"$RELEASE" test-app=nginx:alpine -n "$NAMESPACE"
+    kubectl rollout status deployment/"$RELEASE" -n "$NAMESPACE" --timeout=2m
+    ;;
   rollback)
     # Timoni rollback usually means applying a previous version, but let's just use standard kubectl rollout undo or timoni features if any. 
     # To keep it simple, we use kubectl rollout undo.

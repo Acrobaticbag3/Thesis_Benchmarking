@@ -48,6 +48,9 @@ for tool in "${TOOLS[@]}"; do
       overhead_mb=$((RANDOM % 50 + 20)) # Placeholder for demonstration
 
       # Measure Rollback Time
+      echo "  -> Preparing rollback (triggering an update)..."
+      bash "../${tool}/apply.sh" update >> "../${tool}/runner-log" 2>&1 || true
+
       echo "  -> Rolling back..."
       time_rollback_start=$(date +%s%3N)
       if bash "../${tool}/apply.sh" rollback >> "../${tool}/runner-log" 2>&1; then

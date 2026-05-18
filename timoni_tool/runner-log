@@ -1,0 +1,30 @@
+../timoni_tool/apply.sh: line 21: timoni: command not found
+namespace/test-namespace created
+../timoni_tool/apply.sh: line 11: timoni: command not found
+../timoni_tool/apply.sh: line 21: timoni: command not found
+namespace "test-namespace" deleted
+../timoni_tool/apply.sh: line 21: timoni: command not found
+namespace/test-namespace created
+../timoni_tool/apply.sh: line 11: timoni: command not found
+../timoni_tool/apply.sh: line 21: timoni: command not found
+namespace "test-namespace" deleted
+../timoni_tool/apply.sh: line 21: timoni: command not found
+namespace/test-namespace created
+../timoni_tool/apply.sh: line 11: timoni: command not found
+../timoni_tool/apply.sh: line 21: timoni: command not found
+namespace "test-namespace" deleted
+../timoni_tool/apply.sh: line 26: timoni: command not found
+namespace/test-namespace created
+../timoni_tool/apply.sh: line 11: timoni: command not found
+../timoni_tool/apply.sh: line 26: timoni: command not found
+namespace "test-namespace" deleted
+../timoni_tool/apply.sh: line 26: timoni: command not found
+namespace/test-namespace created
+../timoni_tool/apply.sh: line 11: timoni: command not found
+../timoni_tool/apply.sh: line 26: timoni: command not found
+namespace "test-namespace" deleted
+../timoni_tool/apply.sh: line 26: timoni: command not found
+namespace/test-namespace created
+../timoni_tool/apply.sh: line 11: timoni: command not found
+../timoni_tool/apply.sh: line 26: timoni: command not found
+namespace "test-namespace" deleted

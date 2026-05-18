@@ -11,6 +11,11 @@ case "$1" in
     kubectl apply -k "$KUSTOMIZE_DIR" -n "$NAMESPACE"
     kubectl rollout status deployment/"$RELEASE" -n "$NAMESPACE" --timeout=2m
     ;;
+  update)
+    # trigger a change so we have history
+    kubectl set image deployment/"$RELEASE" test-app=nginx:alpine -n "$NAMESPACE"
+    kubectl rollout status deployment/"$RELEASE" -n "$NAMESPACE" --timeout=2m
+    ;;
   rollback)
     kubectl rollout undo deployment/"$RELEASE" -n "$NAMESPACE"
     kubectl rollout status deployment/"$RELEASE" -n "$NAMESPACE" --timeout=2m

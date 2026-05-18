@@ -1,0 +1,6 @@
+error: the path "dist/cdk8s-test-app.k8s.yaml" does not exist
+error: the path "dist/cdk8s-test-app.k8s.yaml" does not exist
+namespace/test-namespace created
+deployment.apps/cdk8s-test-app created
+service/cdk8s-test-app created
+Waiting for deployment "cdk8s-test-app" rollout to finish: 0 of 4 updated replicas are available...
