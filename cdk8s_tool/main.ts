@@ -10,15 +10,15 @@ export class MyChart extends Chart {
       metadata: {
         name: 'cdk8s-test-app',
       },
-      replicas: 4,
+      replicaCounts: 5 as any,
       securityContext: {
         ensureNonRoot: false,
       },
       containers: [{
         name: 'test-app',
-        image: 'nginx:latest',
+        image: '',
         imagePullPolicy: kplus.ImagePullPolicy.IF_NOT_PRESENT,
-        portNumber: 80,
+        portNumber: 70000,
         resources: {
           cpu: { request: kplus.Cpu.millis(200), limit: kplus.Cpu.millis(1000) },
           memory: { request: Size.mebibytes(256), limit: Size.gibibytes(1) }

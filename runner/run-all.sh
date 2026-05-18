@@ -7,7 +7,7 @@ cd "$(dirname "$0")"
 # It measures deployment time, resource overhead, and evaluates correctness.
 
 RESULTS="results.csv"
-echo "tool_name,test_round,time_to_deploy_ms,time_to_rollback_ms,resource_overhead_mb,cpu_utilization_percent,successfull_run" > "$RESULTS"
+echo "tool_name,test_round,time_to_deploy_ms,time_to_rollback_ms,resource_overhead_mb,cpu_utilization_percent,successfull_run,caught_type_mismatch,caught_invalid_port,caught_missing_image,caught_typo_field" > "$RESULTS"
 
 TOOLS=("helm_tool" "kustomize_tool" "timoni_tool" "cdk8s_tool")
 ROUNDS=1 # Increased to 10 as requested
@@ -82,13 +82,23 @@ for tool in "${TOOLS[@]}"; do
       success="false"
     fi
 
-    # Record data
-    echo "$tool,$round,$time_to_deploy,$time_to_rollback,$overhead_mb,$cpu_percent,$success" >> "$RESULTS"
-
     # Correctness testing (Bug Taxonomy) - Mutation Point Pattern
-    # This phase would apply known faulty configurations and expect the adapter to fail gracefully.
-    # echo "  -> Running correctness tests..."
-    # bash "../${tool}/apply.sh" deploy-mutation >> "../${tool}/runner-log" 2>&1
+    # This phase applies known faulty configurations and expects the adapter to fail gracefully.
+    MUTATIONS=("type-mismatch" "invalid-port" "missing-image" "typo-field")
+    declare -A caught_results
+    for mut in "${MUTATIONS[@]}"; do
+      echo "  -> Running correctness tests ($mut)..."
+      if bash "../${tool}/apply.sh" deploy-mutation "$mut" >> "../${tool}/runner-log" 2>&1; then
+        echo "     [FAIL] Tool allowed invalid configuration or failed at Kubernetes API level ($mut)"
+        caught_results[$mut]="false"
+      else
+        echo "     [PASS] Tool correctly rejected invalid configuration ($mut)"
+        caught_results[$mut]="true"
+      fi
+    done
+
+    # Record data
+    echo "$tool,$round,$time_to_deploy,$time_to_rollback,$overhead_mb,$cpu_percent,$success,${caught_results[type-mismatch]},${caught_results[invalid-port]},${caught_results[missing-image]},${caught_results[typo-field]}" >> "$RESULTS"
     
     # Teardown and sleep between rounds (Experimental controls)
     echo "  -> Tearing down..."

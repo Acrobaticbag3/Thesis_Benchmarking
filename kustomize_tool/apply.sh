@@ -24,4 +24,9 @@ case "$1" in
     kubectl delete -k "$KUSTOMIZE_DIR" -n "$NAMESPACE" --ignore-not-found
     kubectl delete namespace "$NAMESPACE" --ignore-not-found
     ;;
+  deploy-mutation)
+    MUTATION_TYPE=${2:-type-mismatch}
+    kubectl create namespace "$NAMESPACE" --dry-run=client -o yaml | kubectl apply -f -
+    kubectl apply -k "$KUSTOMIZE_DIR/mutation-$MUTATION_TYPE" -n "$NAMESPACE"
+    ;;
 esac

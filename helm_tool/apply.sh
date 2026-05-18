@@ -24,4 +24,37 @@ case "$1" in
     helm uninstall "$RELEASE" --namespace "$NAMESPACE" || true
     kubectl delete namespace "$NAMESPACE" --ignore-not-found
     ;;
+  deploy-mutation)
+    MUTATION_TYPE=${2:-type-mismatch}
+    case "$MUTATION_TYPE" in
+      type-mismatch)
+        helm upgrade --install "$RELEASE" "$CHART_DIR" \
+          --namespace "$NAMESPACE" --create-namespace \
+          --values "$CHART_DIR/values.yaml" \
+          --set replicaCount="four" \
+          --wait --timeout 2m
+        ;;
+      invalid-port)
+        helm upgrade --install "$RELEASE" "$CHART_DIR" \
+          --namespace "$NAMESPACE" --create-namespace \
+          --values "$CHART_DIR/values.yaml" \
+          --set service.port=70000 \
+          --wait --timeout 2m
+        ;;
+      missing-image)
+        helm upgrade --install "$RELEASE" "$CHART_DIR" \
+          --namespace "$NAMESPACE" --create-namespace \
+          --values "$CHART_DIR/values.yaml" \
+          --set image.repository="" \
+          --wait --timeout 2m
+        ;;
+      typo-field)
+        helm upgrade --install "$RELEASE" "$CHART_DIR" \
+          --namespace "$NAMESPACE" --create-namespace \
+          --values "$CHART_DIR/values.yaml" \
+          --set replicaCounts=5 \
+          --wait --timeout 2m
+        ;;
+    esac
+    ;;
 esac

@@ -361,3 +361,140 @@ namespace "test-namespace" deleted
 6:24PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app deleted
 6:24PM INF i:timoni-test-app > all resources have been deleted
 namespace "test-namespace" deleted
+7:17PM ERR instance storage not found: secrets "timoni.timoni-test-app" not found
+7:17PM INF i:timoni-test-app > building ../timoni_tool
+7:17PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+7:17PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+7:17PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+7:17PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+7:17PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+7:17PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+7:17PM INF i:timoni-test-app > resources are ready
+7:17PM INF i:timoni-test-app > building ../timoni_tool
+7:17PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+7:17PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+7:17PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+7:17PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+7:17PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+7:17PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+7:17PM INF i:timoni-test-app > resources are ready
+7:17PM INF i:timoni-test-app > building ../timoni_tool
+7:17PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+7:17PM ERR build failed:
+values.replicas: 2 errors in empty disjunction:
+values.replicas: conflicting values "four" and 1 (mismatched types string and int):
+    ./templates/config.cue:55:13
+    ./timoni.cue:14:9
+    ./values.cue:3:12
+values.replicas: conflicting values "four" and int (mismatched types string and int):
+    ./templates/config.cue:55:17
+    ./timoni.cue:14:9
+    ./values.cue:3:12
+
+7:17PM INF i:timoni-test-app > deleting 4 resource(s)...
+7:17PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app deleted
+7:17PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app deleted
+7:17PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 deleted
+7:17PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app deleted
+7:17PM INF i:timoni-test-app > all resources have been deleted
+namespace "test-namespace" deleted
+7:24PM ERR instance storage not found: secrets "timoni.timoni-test-app" not found
+7:24PM INF i:timoni-test-app > building ../timoni_tool
+7:24PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+7:24PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+7:24PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+7:24PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+7:24PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+7:24PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+7:25PM INF i:timoni-test-app > resources are ready
+7:25PM INF i:timoni-test-app > building ../timoni_tool
+7:25PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+7:25PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+7:25PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+7:25PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+7:25PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+7:25PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+7:25PM INF i:timoni-test-app > resources are ready
+7:25PM INF i:timoni-test-app > building ../timoni_tool
+7:25PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+7:25PM ERR build failed:
+values.replicas: 2 errors in empty disjunction:
+values.replicas: conflicting values "four" and 1 (mismatched types string and int):
+    ./templates/config.cue:55:13
+    ./timoni.cue:14:9
+    ./values.cue:3:12
+values.replicas: conflicting values "four" and int (mismatched types string and int):
+    ./templates/config.cue:55:17
+    ./timoni.cue:14:9
+    ./values.cue:3:12
+
+7:25PM INF i:timoni-test-app > deleting 4 resource(s)...
+7:25PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app deleted
+7:25PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app deleted
+7:25PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 deleted
+7:25PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app deleted
+7:25PM INF i:timoni-test-app > all resources have been deleted
+namespace "test-namespace" deleted
+7:33PM ERR instance storage not found: secrets "timoni.timoni-test-app" not found
+7:33PM INF i:timoni-test-app > building ../timoni_tool
+7:33PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+7:33PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+7:33PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+7:33PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+7:33PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+7:33PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+7:34PM INF i:timoni-test-app > resources are ready
+7:34PM INF i:timoni-test-app > building ../timoni_tool
+7:34PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+7:34PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+7:34PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+7:34PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+7:34PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+7:34PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+7:34PM INF i:timoni-test-app > resources are ready
+7:34PM INF i:timoni-test-app > building ../timoni_tool
+7:34PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+7:34PM ERR build failed:
+values.replicas: 2 errors in empty disjunction:
+values.replicas: conflicting values "four" and 1 (mismatched types string and int):
+    ./templates/config.cue:55:13
+    ./timoni.cue:14:9
+    ./values.cue:3:12
+values.replicas: conflicting values "four" and int (mismatched types string and int):
+    ./templates/config.cue:55:17
+    ./timoni.cue:14:9
+    ./values.cue:3:12
+
+7:34PM INF i:timoni-test-app > building ../timoni_tool
+7:34PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+7:34PM ERR build failed:
+values.service.port: 2 errors in empty disjunction:
+values.service.port: conflicting values 80 and 70000:
+    ./templates/config.cue:74:10
+    ./timoni.cue:14:9
+    ./values.cue:4:9
+values.service.port: invalid value 70000 (out of bound <=65535):
+    ./templates/config.cue:74:26
+    ./values.cue:4:9
+
+7:34PM INF i:timoni-test-app > building ../timoni_tool
+7:34PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+7:34PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+7:34PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+7:34PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+7:34PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+7:34PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+7:39PM ERR [timeout waiting for: [Deployment/test-namespace/timoni-test-app status: 'InProgress'], storing instance failed: client rate limiter Wait returned an error: context deadline exceeded]
+7:39PM INF i:timoni-test-app > building ../timoni_tool
+7:39PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+7:39PM ERR build failed:
+timoni.instance.objects.sa.#config.replicaCounts: field not allowed:
+    ./values.cue:3:2
+
+7:39PM INF i:timoni-test-app > deleting 4 resource(s)...
+7:39PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app deleted
+7:39PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app deleted
+7:39PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 deleted
+7:39PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app deleted
+7:39PM INF i:timoni-test-app > all resources have been deleted
+namespace "test-namespace" deleted

@@ -35,4 +35,47 @@ case "$1" in
     kubectl delete -f dist/cdk8s-test-app.k8s.yaml -n "$NAMESPACE" --ignore-not-found || true
     kubectl delete namespace "$NAMESPACE" --ignore-not-found
     ;;
+  deploy-mutation)
+    MUTATION_TYPE=${2:-type-mismatch}
+    cd "$CDK8S_DIR"
+    
+    case "$MUTATION_TYPE" in
+      type-mismatch)
+        sed -i 's/replicas: 4,/replicas: "four" as any,/' main.ts
+        ;;
+      invalid-port)
+        sed -i 's/portNumber: 80,/portNumber: 70000,/' main.ts
+        ;;
+      missing-image)
+        sed -i "s/image: 'nginx:latest',/image: '',/" main.ts
+        ;;
+      typo-field)
+        sed -i 's/replicas: 4,/replicaCounts: 5 as any,/' main.ts
+        ;;
+    esac
+    
+    npx -y cdk8s-cli synth > /dev/null 2>&1
+    exit_code=$?
+    
+    case "$MUTATION_TYPE" in
+      type-mismatch)
+        sed -i 's/replicas: "four" as any,/replicas: 4,/' main.ts
+        ;;
+      invalid-port)
+        sed -i 's/portNumber: 70000,/portNumber: 80,/' main.ts
+        ;;
+      missing-image)
+        sed -i "s/image: '',/image: 'nginx:latest',/" main.ts
+        ;;
+      typo-field)
+        sed -i 's/replicaCounts: 5 as any,/replicas: 4,/' main.ts
+        ;;
+    esac
+    
+    if [ $exit_code -ne 0 ]; then
+      exit $exit_code
+    fi
+    kubectl create namespace "$NAMESPACE" --dry-run=client -o yaml | kubectl apply -f -
+    kubectl apply -f dist/cdk8s-test-app.k8s.yaml -n "$NAMESPACE"
+    ;;
 esac

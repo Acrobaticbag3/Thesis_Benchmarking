@@ -1,5 +1,5 @@
-tool_name,test_round,time_to_deploy_ms,time_to_rollback_ms,resource_overhead_mb,cpu_utilization_percent,successfull_run
-helm_tool,1,2170,2095,60,11,true
-kustomize_tool,1,1400,2007,79,39,true
-timoni_tool,1,5157,5137,53,3,true
-cdk8s_tool,1,17862,22053,263,35,true
+tool_name,test_round,time_to_deploy_ms,time_to_rollback_ms,resource_overhead_mb,cpu_utilization_percent,successfull_run,caught_type_mismatch,caught_invalid_port,caught_missing_image,caught_typo_field
+helm_tool,1,2199,2096,61,13,true,true,true,true,false
+kustomize_tool,1,1578,2013,74,34,true,true,true,true,true
+timoni_tool,1,5167,5157,53,3,true,true,true,true,true
+cdk8s_tool,1,20406,22061,262,35,true,true,true,true,true

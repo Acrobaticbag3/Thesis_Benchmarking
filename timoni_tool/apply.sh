@@ -20,4 +20,8 @@ case "$1" in
     timoni delete "$RELEASE" -n "$NAMESPACE" --wait || true
     kubectl delete namespace "$NAMESPACE" --ignore-not-found
     ;;
+  deploy-mutation)
+    MUTATION_TYPE=${2:-type-mismatch}
+    timoni apply "$RELEASE" "$TIMONI_DIR" -n "$NAMESPACE" --values "$TIMONI_DIR/values-$MUTATION_TYPE.yaml" --wait
+    ;;
 esac
