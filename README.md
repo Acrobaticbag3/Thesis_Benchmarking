@@ -43,7 +43,7 @@ Follow these exact steps to ensure a flawless benchmarking run:
 1. **Start the local Kubernetes cluster**
    We use Kind to create a clean, reproducible environment:
    ```bash
-   kind create cluster --name kind
+   kind create cluster --name Thesis
    ```
 
 2. **Install local dependencies for CDK8s**

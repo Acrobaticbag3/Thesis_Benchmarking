@@ -15,10 +15,10 @@ ROUNDS=10 # Increased to 10 as requested
 NAMESPACE="test-namespace"
 IMAGE="nginx:latest"
 
-# Experimental controls: Image pre-pulling (Assuming 'kind' cluster named 'kind')
+# Experimental controls: Image pre-pulling (Assuming 'kind' cluster named 'Thesis')
 echo "=== Pre-pulling image to cluster nodes for deterministic startup ==="
 docker pull $IMAGE > /dev/null 2>&1 || true
-kind load docker-image $IMAGE --name kind > /dev/null 2>&1 || true
+kind load docker-image $IMAGE --name Thesis > /dev/null 2>&1 || true
 
 for tool in "${TOOLS[@]}"; do 
   echo "========================================="
