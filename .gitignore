@@ -1,0 +1,13 @@
+# Node
+node_modules/
+dist/
+
+# CUE / Timoni
+cue.mod/gen/
+cue.mod/pkg/
+
+# Logs and outputs
+time.out
+runner-log
+chat.txt
+runner/*.csv
