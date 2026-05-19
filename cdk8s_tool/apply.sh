@@ -41,16 +41,16 @@ case "$1" in
     
     case "$MUTATION_TYPE" in
       type-mismatch)
-        sed -i 's/replicas: 4,/replicas: "four" as any,/' main.ts
+        sed -i.bak 's/replicas: 4,/replicas: "four" as any,/' main.ts
         ;;
       invalid-port)
-        sed -i 's/portNumber: 80,/portNumber: 70000,/' main.ts
+        sed -i.bak 's/portNumber: 80,/portNumber: 70000,/' main.ts
         ;;
       missing-image)
-        sed -i "s/image: 'nginx:latest',/image: '',/" main.ts
+        sed -i.bak "s/image: 'nginx:latest',/image: '',/" main.ts
         ;;
       typo-field)
-        sed -i 's/replicas: 4,/replicaCounts: 5 as any,/' main.ts
+        sed -i.bak 's/replicas: 4,/replicaCounts: 5 as any,/' main.ts
         ;;
     esac
     
@@ -59,18 +59,19 @@ case "$1" in
     
     case "$MUTATION_TYPE" in
       type-mismatch)
-        sed -i 's/replicas: "four" as any,/replicas: 4,/' main.ts
+        sed -i.bak 's/replicas: "four" as any,/replicas: 4,/' main.ts
         ;;
       invalid-port)
-        sed -i 's/portNumber: 70000,/portNumber: 80,/' main.ts
+        sed -i.bak 's/portNumber: 70000,/portNumber: 80,/' main.ts
         ;;
       missing-image)
-        sed -i "s/image: '',/image: 'nginx:latest',/" main.ts
+        sed -i.bak "s/image: '',/image: 'nginx:latest',/" main.ts
         ;;
       typo-field)
-        sed -i 's/replicaCounts: 5 as any,/replicas: 4,/' main.ts
+        sed -i.bak 's/replicaCounts: 5 as any,/replicas: 4,/' main.ts
         ;;
     esac
+    rm -f main.ts.bak
     
     if [ $exit_code -ne 0 ]; then
       exit $exit_code

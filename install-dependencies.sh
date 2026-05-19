@@ -13,12 +13,23 @@ for cmd in docker node npm; do
     exit 1
   fi
 done
-echo "Core dependencies (Docker, Node, NPM) found."
+
+# Arch Linux specific check: Arch does not ship with GNU time by default, only the bash builtin
+if [ ! -f "/usr/bin/time" ]; then
+  echo "[ERROR] GNU 'time' is not installed at /usr/bin/time."
+  echo "On Arch Linux, please install it by running: sudo pacman -S time"
+  echo "This is required to measure RAM overhead."
+  exit 1
+fi
+echo "Core dependencies (Docker, Node, NPM, GNU time) found."
 
 # 2. Install kubectl
 if ! command -v kubectl &> /dev/null; then
-  echo "--> Installing kubectl..."
-  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+  OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+  ARCH=$(uname -m)
+  if [ "$ARCH" = "x86_64" ]; then ARCH="amd64"; fi
+  if [ "$ARCH" = "aarch64" ]; then ARCH="arm64"; fi
+  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/$OS/$ARCH/kubectl"
   chmod +x kubectl
   sudo mv kubectl /usr/local/bin/
 else
@@ -28,8 +39,11 @@ fi
 # 3. Install Kind (Kubernetes IN Docker)
 if ! command -v kind &> /dev/null; then
   echo "--> Installing Kind..."
-  # Fetch latest stable kind for linux-amd64
-  curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.22.0/kind-linux-amd64
+  OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+  ARCH=$(uname -m)
+  if [ "$ARCH" = "x86_64" ]; then ARCH="amd64"; fi
+  if [ "$ARCH" = "aarch64" ]; then ARCH="arm64"; fi
+  curl -Lo ./kind "https://kind.sigs.k8s.io/dl/v0.22.0/kind-$OS-$ARCH"
   chmod +x ./kind
   sudo mv ./kind /usr/local/bin/kind
 else

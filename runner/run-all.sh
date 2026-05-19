@@ -20,6 +20,23 @@ echo "=== Pre-pulling image to cluster nodes for deterministic startup ==="
 docker pull $IMAGE > /dev/null 2>&1 || true
 kind load docker-image $IMAGE --name thesis > /dev/null 2>&1 || true
 
+get_time_ms() {
+  local t
+  t=$(date +%s%3N 2>/dev/null || echo "")
+  if [[ -z "$t" || "$t" == *N* ]]; then
+    # MacOS fallback (seconds precision multiplied to ms)
+    echo $(($(date +%s) * 1000))
+  else
+    echo "$t"
+  fi
+}
+
+if [ "$(uname)" = "Darwin" ]; then
+  TIME_CMD="/usr/bin/time -l"
+else
+  TIME_CMD="/usr/bin/time -v"
+fi
+
 for tool in "${TOOLS[@]}"; do 
   echo "========================================="
   echo "Evaluating tool: $tool"
@@ -56,27 +73,45 @@ for tool in "${TOOLS[@]}"; do
 
     # Measure Deployment Time and Host/Client-side Overhead
     echo "  -> Deploying..."
-    time_deploy_start=$(date +%s%3N)
+    time_deploy_start=$(get_time_ms)
     time_output=$(mktemp)
     
-    # Use /usr/bin/time -v to capture the memory footprint of the client-side tool
-    if /usr/bin/time -v bash "../${tool}/apply.sh" deploy >> "../${tool}/runner-log" 2> "$time_output"; then
-      time_deploy_end=$(date +%s%3N)
+    # Check if TIME_CMD exists (e.g. Arch Linux often lacks /usr/bin/time)
+    if [ -x "$(command -v $(echo $TIME_CMD | awk '{print $1}'))" ] || [ -f "$(echo $TIME_CMD | awk '{print $1}')" ]; then
+      DEPLOY_CMD="$TIME_CMD bash ../${tool}/apply.sh deploy"
+    else
+      DEPLOY_CMD="bash ../${tool}/apply.sh deploy"
+    fi
+
+    if $DEPLOY_CMD >> "../${tool}/runner-log" 2> "$time_output"; then
+      time_deploy_end=$(get_time_ms)
       time_to_deploy=$(( time_deploy_end - time_deploy_start ))
       
-      # Extract Maximum resident set size (kbytes) from the time output and convert to MB
-      rss_kb=$(grep "Maximum resident set size" "$time_output" | awk '{print $6}')
-      if [[ -n "$rss_kb" ]]; then
-        overhead_mb=$(( rss_kb / 1024 ))
+      if [[ "$DEPLOY_CMD" == *"/usr/bin/time"* ]]; then
+        if [ "$(uname)" = "Darwin" ]; then
+          rss_bytes=$(grep "maximum resident set size" "$time_output" | awk '{print $1}')
+          if [[ -n "$rss_bytes" ]]; then
+            overhead_mb=$(( rss_bytes / 1048576 ))
+          else
+            overhead_mb=0
+          fi
+          cpu_percent="0" # Not easily extracted from MacOS time -l without math
+        else
+          rss_kb=$(grep "Maximum resident set size" "$time_output" | awk '{print $6}')
+          if [[ -n "$rss_kb" ]]; then
+            overhead_mb=$(( rss_kb / 1024 ))
+          else
+            overhead_mb=0
+          fi
+          cpu_percent_raw=$(grep "Percent of CPU this job got" "$time_output" | awk '{print $7}')
+          if [[ -n "$cpu_percent_raw" ]]; then
+            cpu_percent="${cpu_percent_raw%\%}"
+          else
+            cpu_percent="0"
+          fi
+        fi
       else
         overhead_mb=0
-      fi
-      
-      # Extract CPU utilization percent (stripping the % sign)
-      cpu_percent_raw=$(grep "Percent of CPU this job got" "$time_output" | awk '{print $7}')
-      if [[ -n "$cpu_percent_raw" ]]; then
-        cpu_percent="${cpu_percent_raw%\%}"
-      else
         cpu_percent="0"
       fi
       rm -f "$time_output"
@@ -86,9 +121,9 @@ for tool in "${TOOLS[@]}"; do
       bash "../${tool}/apply.sh" update >> "../${tool}/runner-log" 2>&1 || true
 
       echo "  -> Rolling back..."
-      time_rollback_start=$(date +%s%3N)
+      time_rollback_start=$(get_time_ms)
       if bash "../${tool}/apply.sh" rollback >> "../${tool}/runner-log" 2>&1; then
-        time_rollback_end=$(date +%s%3N)
+        time_rollback_end=$(get_time_ms)
         time_to_rollback=$(( time_rollback_end - time_rollback_start ))
       else
         time_to_rollback=-1
