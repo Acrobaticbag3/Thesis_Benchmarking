@@ -888,3 +888,294 @@ namespace "test-namespace" deleted
 8:57PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app deleted
 8:57PM INF i:timoni-test-app > all resources have been deleted
 namespace "test-namespace" deleted
+12:07PM ERR instance storage not found: secrets "timoni.timoni-test-app" not found
+12:07PM INF i:timoni-test-app > building ../timoni_tool
+12:07PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:07PM ERR build failed:
+values.replicas: 2 errors in empty disjunction:
+values.replicas: conflicting values "four" and 1 (mismatched types string and int):
+    ./templates/config.cue:55:13
+    ./timoni.cue:14:9
+    ./values.cue:3:12
+values.replicas: conflicting values "four" and int (mismatched types string and int):
+    ./templates/config.cue:55:17
+    ./timoni.cue:14:9
+    ./values.cue:3:12
+
+12:07PM ERR instance storage not found: secrets "timoni.timoni-test-app" not found
+12:07PM INF i:timoni-test-app > building ../timoni_tool
+12:07PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:07PM ERR build failed:
+values.service.port: 2 errors in empty disjunction:
+values.service.port: conflicting values 80 and 70000:
+    ./templates/config.cue:74:10
+    ./timoni.cue:14:9
+    ./values.cue:4:9
+values.service.port: invalid value 70000 (out of bound <=65535):
+    ./templates/config.cue:74:26
+    ./values.cue:4:9
+
+12:07PM ERR instance storage not found: secrets "timoni.timoni-test-app" not found
+12:07PM INF i:timoni-test-app > building ../timoni_tool
+12:07PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:07PM INF i:timoni-test-app > installing timoni-test-app in namespace test-namespace
+12:07PM INF i:timoni-test-app > Namespace/test-namespace created
+12:07PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app created
+12:07PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 created
+12:07PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app created
+12:07PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app created
+12:12PM ERR [timeout waiting for: [Deployment/test-namespace/timoni-test-app status: 'InProgress'], storing instance failed: client rate limiter Wait returned an error: context deadline exceeded]
+12:12PM INF i:timoni-test-app > deleting 4 resource(s)...
+12:12PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app deleted
+12:12PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app deleted
+12:12PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 deleted
+12:12PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app deleted
+12:12PM INF i:timoni-test-app > all resources have been deleted
+namespace "test-namespace" deleted
+12:12PM INF i:timoni-test-app > building ../timoni_tool
+12:12PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:12PM ERR build failed:
+timoni.instance.objects.sa.#config.replicaCounts: field not allowed:
+    ./values.cue:3:2
+
+12:12PM ERR instance storage not found: secrets "timoni.timoni-test-app" not found
+12:12PM ERR instance storage not found: secrets "timoni.timoni-test-app" not found
+12:12PM INF i:timoni-test-app > building ../timoni_tool
+12:12PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:12PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:12PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:12PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:12PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:12PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:12PM INF i:timoni-test-app > resources are ready
+12:12PM INF i:timoni-test-app > building ../timoni_tool
+12:12PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:12PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:12PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:12PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:12PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:12PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:12PM INF i:timoni-test-app > resources are ready
+12:12PM INF i:timoni-test-app > deleting 4 resource(s)...
+12:12PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app deleted
+12:12PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app deleted
+12:12PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 deleted
+12:12PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app deleted
+12:12PM INF i:timoni-test-app > all resources have been deleted
+namespace "test-namespace" deleted
+12:13PM ERR instance storage not found: secrets "timoni.timoni-test-app" not found
+12:13PM INF i:timoni-test-app > building ../timoni_tool
+12:13PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:13PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:13PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:13PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:13PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:13PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:13PM INF i:timoni-test-app > resources are ready
+12:13PM INF i:timoni-test-app > building ../timoni_tool
+12:13PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:13PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:13PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:13PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:13PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:13PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:13PM INF i:timoni-test-app > resources are ready
+12:13PM INF i:timoni-test-app > deleting 4 resource(s)...
+12:13PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app deleted
+12:13PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app deleted
+12:13PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 deleted
+12:13PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app deleted
+12:13PM INF i:timoni-test-app > all resources have been deleted
+namespace "test-namespace" deleted
+12:13PM ERR instance storage not found: secrets "timoni.timoni-test-app" not found
+12:13PM INF i:timoni-test-app > building ../timoni_tool
+12:13PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:13PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:13PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:13PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:13PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:13PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:13PM INF i:timoni-test-app > resources are ready
+12:13PM INF i:timoni-test-app > building ../timoni_tool
+12:13PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:13PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:13PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:13PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:13PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:13PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:13PM INF i:timoni-test-app > resources are ready
+12:13PM INF i:timoni-test-app > deleting 4 resource(s)...
+12:13PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app deleted
+12:13PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app deleted
+12:13PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 deleted
+12:13PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app deleted
+12:13PM INF i:timoni-test-app > all resources have been deleted
+namespace "test-namespace" deleted
+12:14PM ERR instance storage not found: secrets "timoni.timoni-test-app" not found
+12:14PM INF i:timoni-test-app > building ../timoni_tool
+12:14PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:14PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:14PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:14PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:14PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:14PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:14PM INF i:timoni-test-app > resources are ready
+12:14PM INF i:timoni-test-app > building ../timoni_tool
+12:14PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:14PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:14PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:14PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:14PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:14PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:14PM INF i:timoni-test-app > resources are ready
+12:14PM INF i:timoni-test-app > deleting 4 resource(s)...
+12:14PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app deleted
+12:14PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app deleted
+12:14PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 deleted
+12:14PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app deleted
+12:14PM INF i:timoni-test-app > all resources have been deleted
+namespace "test-namespace" deleted
+12:14PM ERR instance storage not found: secrets "timoni.timoni-test-app" not found
+12:14PM INF i:timoni-test-app > building ../timoni_tool
+12:14PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:14PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:14PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:14PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:14PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:14PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:14PM INF i:timoni-test-app > resources are ready
+12:14PM INF i:timoni-test-app > building ../timoni_tool
+12:14PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:14PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:14PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:14PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:14PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:14PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:15PM INF i:timoni-test-app > resources are ready
+12:15PM INF i:timoni-test-app > deleting 4 resource(s)...
+12:15PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app deleted
+12:15PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app deleted
+12:15PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 deleted
+12:15PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app deleted
+12:15PM INF i:timoni-test-app > all resources have been deleted
+namespace "test-namespace" deleted
+12:15PM ERR instance storage not found: secrets "timoni.timoni-test-app" not found
+12:15PM INF i:timoni-test-app > building ../timoni_tool
+12:15PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:15PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:15PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:15PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:15PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:15PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:15PM INF i:timoni-test-app > resources are ready
+12:15PM INF i:timoni-test-app > building ../timoni_tool
+12:15PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:15PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:15PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:15PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:15PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:15PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:15PM INF i:timoni-test-app > resources are ready
+12:15PM INF i:timoni-test-app > deleting 4 resource(s)...
+12:15PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app deleted
+12:15PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app deleted
+12:15PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 deleted
+12:15PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app deleted
+12:15PM INF i:timoni-test-app > all resources have been deleted
+namespace "test-namespace" deleted
+12:15PM ERR instance storage not found: secrets "timoni.timoni-test-app" not found
+12:15PM INF i:timoni-test-app > building ../timoni_tool
+12:15PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:15PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:15PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:15PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:15PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:15PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:15PM INF i:timoni-test-app > resources are ready
+12:15PM INF i:timoni-test-app > building ../timoni_tool
+12:15PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:15PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:15PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:15PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:15PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:15PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:16PM INF i:timoni-test-app > resources are ready
+12:16PM INF i:timoni-test-app > deleting 4 resource(s)...
+12:16PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app deleted
+12:16PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app deleted
+12:16PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 deleted
+12:16PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app deleted
+12:16PM INF i:timoni-test-app > all resources have been deleted
+namespace "test-namespace" deleted
+12:16PM ERR instance storage not found: secrets "timoni.timoni-test-app" not found
+12:16PM INF i:timoni-test-app > building ../timoni_tool
+12:16PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:16PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:16PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:16PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:16PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:16PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:16PM INF i:timoni-test-app > resources are ready
+12:16PM INF i:timoni-test-app > building ../timoni_tool
+12:16PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:16PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:16PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:16PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:16PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:16PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:16PM INF i:timoni-test-app > resources are ready
+12:16PM INF i:timoni-test-app > deleting 4 resource(s)...
+12:16PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app deleted
+12:16PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app deleted
+12:16PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 deleted
+12:16PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app deleted
+12:16PM INF i:timoni-test-app > all resources have been deleted
+namespace "test-namespace" deleted
+12:16PM ERR instance storage not found: secrets "timoni.timoni-test-app" not found
+12:16PM INF i:timoni-test-app > building ../timoni_tool
+12:16PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:16PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:16PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:16PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:16PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:16PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:16PM INF i:timoni-test-app > resources are ready
+12:16PM INF i:timoni-test-app > building ../timoni_tool
+12:16PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:16PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:16PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:16PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:16PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:16PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:16PM INF i:timoni-test-app > resources are ready
+12:16PM INF i:timoni-test-app > deleting 4 resource(s)...
+12:16PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app deleted
+12:16PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app deleted
+12:16PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 deleted
+12:16PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app deleted
+12:16PM INF i:timoni-test-app > all resources have been deleted
+namespace "test-namespace" deleted
+12:17PM ERR instance storage not found: secrets "timoni.timoni-test-app" not found
+12:17PM INF i:timoni-test-app > building ../timoni_tool
+12:17PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:17PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:17PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:17PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:17PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:17PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:17PM INF i:timoni-test-app > resources are ready
+12:17PM INF i:timoni-test-app > building ../timoni_tool
+12:17PM INF i:timoni-test-app > using module timoni.sh/test-mod version 0.0.0-devel
+12:17PM INF i:timoni-test-app > upgrading timoni-test-app in namespace test-namespace
+12:17PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app unchanged
+12:17PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 unchanged
+12:17PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app unchanged
+12:17PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app configured
+12:17PM INF i:timoni-test-app > resources are ready
+12:17PM INF i:timoni-test-app > deleting 4 resource(s)...
+12:17PM INF i:timoni-test-app > Deployment/test-namespace/timoni-test-app deleted
+12:17PM INF i:timoni-test-app > Service/test-namespace/timoni-test-app deleted
+12:17PM INF i:timoni-test-app > ConfigMap/test-namespace/timoni-test-app-78dc6a45 deleted
+12:17PM INF i:timoni-test-app > ServiceAccount/test-namespace/timoni-test-app deleted
+12:17PM INF i:timoni-test-app > all resources have been deleted
+namespace "test-namespace" deleted

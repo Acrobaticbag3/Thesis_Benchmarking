@@ -668,3 +668,211 @@ TEST SUITE: None
 Rollback was a success! Happy Helming!
 release "benchmark-helm" uninstalled
 namespace "test-namespace" deleted
+Error: uninstall: Release not loaded: benchmark-helm: release: not found
+Release "benchmark-helm" does not exist. Installing it now.
+Error: 1 error occurred:
+	* Deployment in version "v1" cannot be handled as a Deployment: json: cannot unmarshal string into Go struct field DeploymentSpec.spec.replicas of type int32
+
+
+release "benchmark-helm" uninstalled
+namespace "test-namespace" deleted
+Release "benchmark-helm" does not exist. Installing it now.
+Error: 1 error occurred:
+	* Deployment.apps "helm-test-app" is invalid: spec.template.spec.containers[0].ports[0].containerPort: Invalid value: 70000: must be between 1 and 65535, inclusive
+
+
+release "benchmark-helm" uninstalled
+namespace "test-namespace" deleted
+Release "benchmark-helm" does not exist. Installing it now.
+Error: context deadline exceeded
+release "benchmark-helm" uninstalled
+namespace "test-namespace" deleted
+Release "benchmark-helm" does not exist. Installing it now.
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 11:59:24 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+release "benchmark-helm" uninstalled
+namespace "test-namespace" deleted
+Error: uninstall: Release not loaded: benchmark-helm: release: not found
+Release "benchmark-helm" does not exist. Installing it now.
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 11:59:31 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+Release "benchmark-helm" has been upgraded. Happy Helming!
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 11:59:34 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+Rollback was a success! Happy Helming!
+release "benchmark-helm" uninstalled
+namespace "test-namespace" deleted
+Error: uninstall: Release not loaded: benchmark-helm: release: not found
+Release "benchmark-helm" does not exist. Installing it now.
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 11:59:54 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+Release "benchmark-helm" has been upgraded. Happy Helming!
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 11:59:56 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+Rollback was a success! Happy Helming!
+release "benchmark-helm" uninstalled
+namespace "test-namespace" deleted
+Error: uninstall: Release not loaded: benchmark-helm: release: not found
+Release "benchmark-helm" does not exist. Installing it now.
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 12:00:18 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+Release "benchmark-helm" has been upgraded. Happy Helming!
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 12:00:21 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+Rollback was a success! Happy Helming!
+release "benchmark-helm" uninstalled
+namespace "test-namespace" deleted
+Error: uninstall: Release not loaded: benchmark-helm: release: not found
+Release "benchmark-helm" does not exist. Installing it now.
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 12:00:43 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+Release "benchmark-helm" has been upgraded. Happy Helming!
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 12:00:45 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+Rollback was a success! Happy Helming!
+release "benchmark-helm" uninstalled
+namespace "test-namespace" deleted
+Error: uninstall: Release not loaded: benchmark-helm: release: not found
+Release "benchmark-helm" does not exist. Installing it now.
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 12:01:05 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+Release "benchmark-helm" has been upgraded. Happy Helming!
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 12:01:08 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+Rollback was a success! Happy Helming!
+release "benchmark-helm" uninstalled
+namespace "test-namespace" deleted
+Error: uninstall: Release not loaded: benchmark-helm: release: not found
+Release "benchmark-helm" does not exist. Installing it now.
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 12:01:30 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+Release "benchmark-helm" has been upgraded. Happy Helming!
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 12:01:32 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+Rollback was a success! Happy Helming!
+release "benchmark-helm" uninstalled
+namespace "test-namespace" deleted
+Error: uninstall: Release not loaded: benchmark-helm: release: not found
+Release "benchmark-helm" does not exist. Installing it now.
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 12:01:55 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+Release "benchmark-helm" has been upgraded. Happy Helming!
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 12:01:57 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+Rollback was a success! Happy Helming!
+release "benchmark-helm" uninstalled
+namespace "test-namespace" deleted
+Error: uninstall: Release not loaded: benchmark-helm: release: not found
+Release "benchmark-helm" does not exist. Installing it now.
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 12:02:20 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+Release "benchmark-helm" has been upgraded. Happy Helming!
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 12:02:23 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+Rollback was a success! Happy Helming!
+release "benchmark-helm" uninstalled
+namespace "test-namespace" deleted
+Error: uninstall: Release not loaded: benchmark-helm: release: not found
+Release "benchmark-helm" does not exist. Installing it now.
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 12:02:45 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+Release "benchmark-helm" has been upgraded. Happy Helming!
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 12:02:47 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+Rollback was a success! Happy Helming!
+release "benchmark-helm" uninstalled
+namespace "test-namespace" deleted
+Error: uninstall: Release not loaded: benchmark-helm: release: not found
+Release "benchmark-helm" does not exist. Installing it now.
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 12:03:10 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+Release "benchmark-helm" has been upgraded. Happy Helming!
+NAME: benchmark-helm
+LAST DEPLOYED: Tue May 19 12:03:12 2026
+NAMESPACE: test-namespace
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+Rollback was a success! Happy Helming!
+release "benchmark-helm" uninstalled
+namespace "test-namespace" deleted

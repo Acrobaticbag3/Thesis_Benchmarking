@@ -1,5 +1,5 @@
 tool_name,avg_time_to_deploy_ms,avg_time_to_rollback_ms,avg_resource_overhead_mb,avg_cpu_utilization_percent
-kustomize_tool,1622,2012,84,34
-timoni_tool,5153,5152,53,3
-cdk8s_tool,14526,22059,263,42
-helm_tool,2186,2104,60,12
+kustomize_tool,1885,3177,79,74
+timoni_tool,5441,6405,53,8
+cdk8s_tool,20176,22127,263,66
+helm_tool,2528,4284,60,26
